@@ -1,47 +1,66 @@
-var gamepad;
-var buttons = [];
-buttons[0] = document.getElementById("bottom_button");
-buttons[1] = document.getElementById("right_button");
-buttons[2] = document.getElementById("left_button");
-buttons[3] = document.getElementById("top_button");
-buttons[4] = document.getElementById("left_trigger");
-buttons[5] = document.getElementById("right_trigger");
-buttons[6] = document.getElementById("left_big_trigger");
-buttons[7] = document.getElementById("right_big_trigger");
-buttons[8] = document.getElementById("select_button");
-buttons[9] = document.getElementById("start_button");
-buttons[10] = document.getElementById("left_joystick");
-buttons[11] = document.getElementById("right_joystick");
-buttons[12] = document.getElementById("top_arrow");
-buttons[13] = document.getElementById("bottom_arrow");
-buttons[14] = document.getElementById("left_arrow");
-buttons[15] = document.getElementById("right_arrow");
-
-window.addEventListener("gamepadconnected", function(e)
+var gamepad =
 {
-	gamepad = navigator.getGamepads()[e.gamepad.index];
+	gamepads: [],
+	ongamepadconnected: null,
+	ongamepaddisconnected: null,
 
-	console.log("Contrôleur n°%d connecté : %s. %d boutons, %d axes.", e.gamepad.index, e.gamepad.id, e.gamepad.buttons.length, e.gamepad.axes.length);
-	gamepad.truc = "lol";
-	console.log(gamepad.buttons);
-	loop_interval = setInterval(loop, 16);
-});
-
-window.addEventListener("gamepaddisconnected", function(e)
-{
-	console.log("Contrôleur n°%d déconnecté : %s", e.gamepad.index, e.gamepad.id);
-	console.log(gamepad);
-});
-
-function loop()
-{
-	for (var i = 0; i < gamepad.buttons.length - 1; i++)
+	init: function()
 	{
-		if (gamepad.buttons[i].pressed)
-			buttons[i].style.opacity = "0.3";
-		else
-			buttons[i].style.opacity = "1";
-	}
+		this.handle_events();
+	},
 
+	is_connected: function(i)
+	{
+		if (this.gamepads[i])
+			return (true);
+		return (false);
+	},
+
+	get_gamepad_infos: function(i)
+	{
+		if (this.gamepads[i])
+		{
+			var infos = {};
+
+			infos.mame = this.gamepads[i].id;
+			infos.buttons = this.gamepads[i].buttons.length;
+			infos.axes = this.gamepads[i].axes.length;
+			return (infos);
+		}
+		return (-1);
+	},
+
+	handle_events: function()
+	{
+		var self = this;
+		window.addEventListener("gamepadconnected", function(e)
+		{
+			self.gamepads = navigator.getGamepads();
+			for (var i = 0; i < self.gamepads.length; ++i)
+			{
+				if (!self.gamepads[i].connected)
+					self.gamepads[i] = null;
+			}
+			if (self.ongamepadconnected)
+			{
+				var ev = {index: e.gamepad.index};
+				self.ongamepadconnected(ev);
+			}
+		});
+		window.addEventListener("gamepaddisconnected", function(e)
+		{
+			self.gamepads = navigator.getGamepads();
+			for (var i = 0; i < self.gamepads.length; ++i)
+			{
+				if (!self.gamepads[i].connected)
+					self.gamepads[i] = null;
+			}
+			if (self.ongamepaddisconnected)
+			{
+				var ev = {index: e.gamepad.index};
+				self.ongamepaddisconnected(ev);
+			}
+		});
+	}
 }
-var loop_interval;
+gamepad.init();
