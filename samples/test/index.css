@@ -1,0 +1,22 @@
+body { margin: 0px; background: #fafafa;}
+
+#gamepad { display: block; position: absolute; width: 400px; height: 250px; border: 5px solid #eee; background: #eee; box-shadow: 0px 0px 4px #aaa;}
+	#gamepad div { position: absolute;}
+	#left_trigger { top: 35px; width: 60px; height: 20px; background: #333;}
+	#left_big_trigger { width: 60px; height: 30px; background: #333;}
+	#right_trigger { top: 35px; right: 0px; width: 60px; height: 20px; background: #333;}
+	#right_big_trigger { right: 0px; width: 60px; height: 30px; background: #333;}
+	#left_joystick_handler { position: absolute; top: 80px; width: 80px; height: 80px; border: 5px solid #333; border-radius: 50%;}
+		#left_joystick { left: 25px; top: 25px; width: 30px; height: 30px; border-radius: 50%; background: #333;}
+	#select_button { left: 150px; top: 120px; width: 25px; height: 10px; border-radius: 5px; background: #333;}
+	#start_button { right: 150px; top: 120px; width: 25px; height: 10px; border-radius: 5px; background: #333;}
+	#top_button { top: 80px; right: 35px; width: 20px; height: 20px; border-radius: 50%; background: #fc5;}
+	#right_button { top: 115px; right: 0px; width: 20px; height: 20px; border-radius: 50%; background: #f55;}
+	#bottom_button { top: 150px; right: 35px; width: 20px; height: 20px; border-radius: 50%; background: #0c5;}
+	#left_button { top: 115px; right: 70px; width: 20px; height: 20px; border-radius: 50%; background: #05f;}
+	#top_arrow { top: 160px; left: 115px; width: 20px; height: 30px; background: #333;}
+	#right_arrow { top: 195px; left: 140px; width: 30px; height: 20px; background: #333;}
+	#bottom_arrow { top: 220px; left: 115px; width: 20px; height: 30px; background: #333;}
+	#left_arrow { top: 195px; left: 80px; width: 30px; height: 20px; background: #333;}
+	#right_joystick_handler { position: absolute; top: 160px; right: 80px; width: 80px; height: 80px; border: 5px solid #333; border-radius: 50%;}
+		#right_joystick { left: 25px; top: 25px; width: 30px; height: 30px; border-radius: 50%; background: #333;}
