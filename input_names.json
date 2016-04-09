@@ -1,0 +1,49 @@
+{
+	"face":
+	{
+		"face_1": 0,
+		"face_2": 0,
+		"face_3": 0,
+		"face_4": 0
+	},
+	"dpad":
+	{
+		"up": 0,
+		"down": 0,
+		"left": 0,
+		"right": 0
+	},
+	"joystick":
+	{
+		"left":
+		{
+			"pressed": 0,
+			"horizontal": 0,
+			"vertical": 0
+		},
+		"right":
+		{
+			"pressed": 0,
+			"horizontal": 0,
+			"vertical": 0
+		}
+	},
+	"shoulder":
+	{
+		"left":
+		{
+			"button": 0,
+			"trigger": 0
+		},
+		"right":
+		{
+			"button": 0,
+			"trigger": 0
+		}
+	},
+	"special":
+	{
+		"start": 0,
+		"select": 0
+	}
+}
